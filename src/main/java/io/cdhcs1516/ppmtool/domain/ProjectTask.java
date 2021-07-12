@@ -21,7 +21,7 @@ public class ProjectTask {
     private Date dueDate;
 
     // ManyToOne tasks <=> backlog
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.REFRESH)
+    @ManyToOne(fetch = FetchType.EAGER) // remove cascade fresh
     @JoinColumn(name="backlog_id", updatable = false, nullable = false)
     @JsonIgnore
     private Backlog backlog;

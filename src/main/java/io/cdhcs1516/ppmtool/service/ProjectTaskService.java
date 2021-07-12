@@ -9,7 +9,6 @@ import io.cdhcs1516.ppmtool.repositories.ProjectTaskRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 
 @Service
 public class ProjectTaskService {
@@ -78,4 +77,23 @@ public class ProjectTaskService {
 
         return projectTask;
     }
+
+    // update project task
+    // find existing project task
+    // replace it with new task
+    // save update
+    public ProjectTask updateByProjectSequence(String backlog_id, String pt_id, ProjectTask updatedTask) {
+        ProjectTask projectTask = findPTByProjectSequence(backlog_id, pt_id);
+        projectTask = updatedTask;
+
+        return projectTaskRepository.save(projectTask);
+    }
+
+    // delete project task
+    public void deleteByProjectSequence(String backlog_id, String pt_id) {
+        ProjectTask projectTask = findPTByProjectSequence(backlog_id, pt_id);
+        projectTaskRepository.delete(projectTask);
+    }
+
+
 }
